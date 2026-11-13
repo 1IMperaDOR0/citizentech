@@ -1,0 +1,116 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Entity class="oracle.dbtools.crest.model.design.logical.Entity" directorySegmentName="seg_0" id="BBE20029-0E64-197D-4C0A-9D8CC45B1C1C" name="GS RELATO">
+<createdBy>Lucas Sena</createdBy>
+<createdTime>2026-11-13 00:40:55 UTC</createdTime>
+<generatorID>EEC6AA05-9F94-7CFB-3837-339494B99F0E</generatorID>
+<ownerDesignName>zeladoria_database </ownerDesignName>
+<engineerTo>
+<item key="FAFC9E71-9576-C095-C818-5CE761A1F03D" value="true"/>
+</engineerTo>
+<adequatelyNormalized>NO</adequatelyNormalized>
+<expectedVolumes>0</expectedVolumes>
+<fwdEngineeringStrategyName>Single Table</fwdEngineeringStrategyName>
+<growthPercent>0</growthPercent>
+<growthType>Year</growthType>
+<maxVolumes>9999999</maxVolumes>
+<minVolumes>0</minVolumes>
+<normalForm>Third</normalForm>
+<attributes itemClass="oracle.dbtools.crest.model.design.logical.Attribute">
+<Attribute name="ID RELATO" id="FFF24301-F6E0-A9AF-99AB-149B398969BC">
+<createdBy>Lucas Sena</createdBy>
+<createdTime>2026-11-13 00:40:55 UTC</createdTime>
+<generatorID>19728399-2E6D-2203-0190-7C47ED76725D</generatorID>
+<ownerDesignName>zeladoria_database </ownerDesignName>
+<engineerTo>
+<item key="FAFC9E71-9576-C095-C818-5CE761A1F03D" value="true"/>
+</engineerTo>
+<use>0</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<domain>C7EDA669-6D56-45ED-6072-98B1BC6184C9</domain>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="ID OCORRENCIA" id="E7B33EB4-25A3-420B-96D3-822D2B81AF3C">
+<createdBy>Lucas Sena</createdBy>
+<createdTime>2026-11-13 00:40:55 UTC</createdTime>
+<generatorID>C0ED7003-1399-37A5-81CE-8D771BC5F362</generatorID>
+<ownerDesignName>zeladoria_database </ownerDesignName>
+<engineerTo>
+<item key="FAFC9E71-9576-C095-C818-5CE761A1F03D" value="true"/>
+</engineerTo>
+<referedAttribute>4BAD6792-0B11-2DD4-4616-F60A2C228669</referedAttribute>
+<use>0</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<domain>C7EDA669-6D56-45ED-6072-98B1BC6184C9</domain>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="ID CIDADAO" id="40ACE613-C1C5-482A-9C29-A5CF67124663">
+<createdBy>Lucas Sena</createdBy>
+<createdTime>2026-11-13 00:40:55 UTC</createdTime>
+<generatorID>FD962B12-01B2-69C6-0170-DD749F03C64F</generatorID>
+<ownerDesignName>zeladoria_database </ownerDesignName>
+<engineerTo>
+<item key="FAFC9E71-9576-C095-C818-5CE761A1F03D" value="true"/>
+</engineerTo>
+<referedAttribute>61233043-C365-E29A-55FD-3D9E570E6EF1</referedAttribute>
+<use>0</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<domain>C7EDA669-6D56-45ED-6072-98B1BC6184C9</domain>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="DESCRICAO" id="0D821A4A-BCD2-71F9-0C9F-2A4362C0F5E7">
+<createdBy>Lucas Sena</createdBy>
+<createdTime>2026-11-13 00:40:55 UTC</createdTime>
+<generatorID>EA7CD109-091A-1771-38C2-90F154ED9B94</generatorID>
+<ownerDesignName>zeladoria_database </ownerDesignName>
+<engineerTo>
+<item key="FAFC9E71-9576-C095-C818-5CE761A1F03D" value="true"/>
+</engineerTo>
+<use>0</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<domain>E020BE95-29EF-17BE-9520-0EAE95DA1C60</domain>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="FOTO URL" id="86AFDC5A-2F5B-4635-6E6B-A9431622C11D">
+<createdBy>Lucas Sena</createdBy>
+<createdTime>2026-11-13 00:40:55 UTC</createdTime>
+<generatorID>D5D83B61-2E7F-C815-EABB-D8F77AA3F3D4</generatorID>
+<ownerDesignName>zeladoria_database </ownerDesignName>
+<engineerTo>
+<item key="FAFC9E71-9576-C095-C818-5CE761A1F03D" value="true"/>
+</engineerTo>
+<use>0</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<domain>4797CEDD-7EEF-BBA3-37BF-CB37FC522F7B</domain>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="CRIADO EM" id="1D4DC4E7-D644-59AE-0168-DDBBA99AB15F">
+<createdBy>Lucas Sena</createdBy>
+<createdTime>2026-11-13 00:40:55 UTC</createdTime>
+<generatorID>69BAC4BF-5906-9B71-B40B-5EBC6266B1D8</generatorID>
+<ownerDesignName>zeladoria_database </ownerDesignName>
+<engineerTo>
+<item key="FAFC9E71-9576-C095-C818-5CE761A1F03D" value="true"/>
+</engineerTo>
+<use>0</use>
+<logicalDatatype>LOGDT015</logicalDatatype>
+<domain>4B3D1509-DC15-E066-0E63-21E9706083C3</domain>
+<defaultValue>CURRENT_TIMESTAMP</defaultValue>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+</attributes>
+<identifiers itemClass="oracle.dbtools.crest.model.design.logical.CandidateKey">
+<identifier id="1C54C76B-108B-E6EE-2EEE-51186ED54DBA" name="PK GS RELATO">
+<createdBy>Lucas Sena</createdBy>
+<createdTime>2026-11-13 00:40:55 UTC</createdTime>
+<generatorID>E48C715A-3779-779D-3261-8E19055D923B</generatorID>
+<ownerDesignName>zeladoria_database </ownerDesignName>
+<engineerTo>
+<item key="FAFC9E71-9576-C095-C818-5CE761A1F03D" value="true"/>
+</engineerTo>
+<pk>true</pk>
+<usedAttributes>
+<attributeRef>FFF24301-F6E0-A9AF-99AB-149B398969BC</attributeRef>
+</usedAttributes>
+</identifier>
+</identifiers>
+</Entity>

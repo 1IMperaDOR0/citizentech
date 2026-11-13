@@ -1,0 +1,87 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<TableProxyOraclev20c class="oracle.dbtools.crest.model.design.storage.oracle.v20c.TableProxyOraclev20c" name="GS_HISTORICO_STATUS" directorySegmentName="seg_0" id="329A1745-CB25-9EB3-F243-138BA68AEBA6">
+<createdBy>Lucas Sena</createdBy>
+<createdTime>2026-11-13 00:40:47 UTC</createdTime>
+<ownerDesignName>zeladoria_database </ownerDesignName>
+<logging>YES</logging>
+<partitionedRowMovement>DISABLE</partitionedRowMovement>
+<temporaryChanged>false</temporaryChanged>
+<accessDriverType>oracle_loader</accessDriverType>
+<rejectLimit></rejectLimit>
+<columnProxies itemClass="oracle.dbtools.crest.model.design.storage.oracle.v12c.ColumnProxyOraclev12c">
+<ColumnProxy name="ID_OCORRENCIA" id="0402F85F-6EE7-0D48-3576-82BECDDCA764">
+<createdBy>Lucas Sena</createdBy>
+<createdTime>2026-11-13 00:40:47 UTC</createdTime>
+<ownerDesignName>zeladoria_database </ownerDesignName>
+</ColumnProxy>
+<ColumnProxy name="STATUS_ANTERIOR" id="3BA3C367-B7A0-DDFB-A3E2-8E177804CB9F">
+<createdBy>Lucas Sena</createdBy>
+<createdTime>2026-11-13 00:40:47 UTC</createdTime>
+<ownerDesignName>zeladoria_database </ownerDesignName>
+</ColumnProxy>
+<ColumnProxy name="RESPONSAVEL" id="6DA85101-78F1-51BD-06C2-CF7021E17F94">
+<createdBy>Lucas Sena</createdBy>
+<createdTime>2026-11-13 00:40:47 UTC</createdTime>
+<ownerDesignName>zeladoria_database </ownerDesignName>
+</ColumnProxy>
+<ColumnProxy name="OBSERVACAO" id="A3F47FD3-8476-552E-6B37-B4BC17C1BDB6">
+<createdBy>Lucas Sena</createdBy>
+<createdTime>2026-11-13 00:40:47 UTC</createdTime>
+<ownerDesignName>zeladoria_database </ownerDesignName>
+</ColumnProxy>
+<ColumnProxy name="ID_HISTORICO" id="B6C71939-70FE-E4B3-DFEC-9D98DCF519ED">
+<createdBy>Lucas Sena</createdBy>
+<createdTime>2026-11-13 00:40:47 UTC</createdTime>
+<ownerDesignName>zeladoria_database </ownerDesignName>
+<autoIncrementDDL>IDENTITY_CLAUSE</autoIncrementDDL>
+</ColumnProxy>
+<ColumnProxy name="ALTERADO_EM" id="BE3839B6-DC8D-C6FF-407A-A1FC3C501575">
+<createdBy>Lucas Sena</createdBy>
+<createdTime>2026-11-13 00:40:47 UTC</createdTime>
+<ownerDesignName>zeladoria_database </ownerDesignName>
+<defaultValue>CURRENT_TIMESTAMP</defaultValue>
+</ColumnProxy>
+<ColumnProxy name="STATUS_NOVO" id="CFA43F1F-296B-A098-58EE-23B6A97CE674">
+<createdBy>Lucas Sena</createdBy>
+<createdTime>2026-11-13 00:40:47 UTC</createdTime>
+<ownerDesignName>zeladoria_database </ownerDesignName>
+</ColumnProxy>
+</columnProxies>
+<indexProxies>
+<IndexProxy class="oracle.dbtools.crest.model.design.storage.oracle.v10g.IndexProxyOraclev10g" name="IX_GS_H_OCORRENCIA" id="F6ABEC27-DF82-5FFE-B284-9EA121B337C5">
+<createdBy>Lucas Sena</createdBy>
+<createdTime>2026-11-13 00:40:47 UTC</createdTime>
+<ownerDesignName>zeladoria_database </ownerDesignName>
+<logging></logging>
+</IndexProxy>
+</indexProxies>
+<foreignKeys>
+<ForeignKey class="oracle.dbtools.crest.model.design.storage.oracle.v10g.FKProxyOraclev10g" name="FK_GS_H_OCORRENCIA" id="D173F1C6-9907-AE7E-75E2-64E667AE68AF">
+<createdBy>Lucas Sena</createdBy>
+<createdTime>2026-11-13 00:40:47 UTC</createdTime>
+<ownerDesignName>zeladoria_database </ownerDesignName>
+</ForeignKey>
+</foreignKeys>
+<primaryKeys>
+<PrimaryKey class="oracle.dbtools.crest.model.design.storage.oracle.v10g.PKProxyOraclev10g" name="PK_GS_HISTORICO" id="0F242620-88A2-EC37-308B-0EB607AE3501">
+<createdBy>Lucas Sena</createdBy>
+<createdTime>2026-11-13 00:40:47 UTC</createdTime>
+<ownerDesignName>zeladoria_database </ownerDesignName>
+<indexSort>SORTED</indexSort>
+</PrimaryKey>
+</primaryKeys>
+<tableCheckConstraints itemClass="oracle.dbtools.crest.model.design.storage.oracle.TableCheckConstraintOracle">
+<TableCheckConstraint name="CK_GS_H_NOVO" id="2EEEC960-364B-BD4C-C072-3EAC712563B5">
+<createdBy>Lucas Sena</createdBy>
+<createdTime>2026-11-13 00:40:47 UTC</createdTime>
+<ownerDesignName>zeladoria_database </ownerDesignName>
+<nameChanged>true</nameChanged>
+</TableCheckConstraint>
+<TableCheckConstraint name="CK_GS_H_ANTERIOR" id="96A1DE53-3DC5-001B-041F-14DC7EE7C2BD">
+<createdBy>Lucas Sena</createdBy>
+<createdTime>2026-11-13 00:40:47 UTC</createdTime>
+<ownerDesignName>zeladoria_database </ownerDesignName>
+<nameChanged>true</nameChanged>
+</TableCheckConstraint>
+</tableCheckConstraints>
+</TableProxyOraclev20c>

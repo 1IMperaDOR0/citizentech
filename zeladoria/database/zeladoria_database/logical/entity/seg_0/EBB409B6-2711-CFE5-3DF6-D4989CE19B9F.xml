@@ -1,0 +1,199 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Entity class="oracle.dbtools.crest.model.design.logical.Entity" directorySegmentName="seg_0" id="EBB409B6-2711-CFE5-3DF6-D4989CE19B9F" name="GS OCORRENCIA">
+<createdBy>Lucas Sena</createdBy>
+<createdTime>2026-11-13 00:40:55 UTC</createdTime>
+<generatorID>4CA7F831-0471-3303-60C4-C5A3FD287EC8</generatorID>
+<ownerDesignName>zeladoria_database </ownerDesignName>
+<engineerTo>
+<item key="FAFC9E71-9576-C095-C818-5CE761A1F03D" value="true"/>
+</engineerTo>
+<adequatelyNormalized>NO</adequatelyNormalized>
+<expectedVolumes>0</expectedVolumes>
+<fwdEngineeringStrategyName>Single Table</fwdEngineeringStrategyName>
+<growthPercent>0</growthPercent>
+<growthType>Year</growthType>
+<maxVolumes>9999999</maxVolumes>
+<minVolumes>0</minVolumes>
+<normalForm>Third</normalForm>
+<attributes itemClass="oracle.dbtools.crest.model.design.logical.Attribute">
+<Attribute name="ID OCORRENCIA" id="4BAD6792-0B11-2DD4-4616-F60A2C228669">
+<createdBy>Lucas Sena</createdBy>
+<createdTime>2026-11-13 00:40:55 UTC</createdTime>
+<generatorID>ED5927F8-915F-C891-1153-0263EF751930</generatorID>
+<ownerDesignName>zeladoria_database </ownerDesignName>
+<engineerTo>
+<item key="FAFC9E71-9576-C095-C818-5CE761A1F03D" value="true"/>
+</engineerTo>
+<use>0</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<domain>C7EDA669-6D56-45ED-6072-98B1BC6184C9</domain>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="ID BAIRRO" id="6FEDFCDD-BA8E-2A19-DAB5-08541BB3F2A5">
+<createdBy>Lucas Sena</createdBy>
+<createdTime>2026-11-13 00:40:55 UTC</createdTime>
+<generatorID>8A31C3EC-2D16-A3F5-A7F4-71D668F9B95F</generatorID>
+<ownerDesignName>zeladoria_database </ownerDesignName>
+<engineerTo>
+<item key="FAFC9E71-9576-C095-C818-5CE761A1F03D" value="true"/>
+</engineerTo>
+<referedAttribute>684E5B71-B98F-4068-FEB5-FF4A7F51B7DA</referedAttribute>
+<use>0</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<domain>C7EDA669-6D56-45ED-6072-98B1BC6184C9</domain>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="ID CATEGORIA" id="21CF88F1-FDAD-ADCB-FBDD-1A6BC69CA7CC">
+<createdBy>Lucas Sena</createdBy>
+<createdTime>2026-11-13 00:40:55 UTC</createdTime>
+<generatorID>E35CEF26-145B-FC3C-1BD5-39E77E04DDC1</generatorID>
+<ownerDesignName>zeladoria_database </ownerDesignName>
+<engineerTo>
+<item key="FAFC9E71-9576-C095-C818-5CE761A1F03D" value="true"/>
+</engineerTo>
+<referedAttribute>7C9594EC-05B6-D593-F96D-0DED23BCEDEB</referedAttribute>
+<use>0</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<domain>C7EDA669-6D56-45ED-6072-98B1BC6184C9</domain>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="DESCRICAO" id="F10CE21F-0213-8DD3-F518-D941529ACEAE">
+<createdBy>Lucas Sena</createdBy>
+<createdTime>2026-11-13 00:40:55 UTC</createdTime>
+<generatorID>30928AAA-6C95-BAF1-82AC-FF278CBA297D</generatorID>
+<ownerDesignName>zeladoria_database </ownerDesignName>
+<engineerTo>
+<item key="FAFC9E71-9576-C095-C818-5CE761A1F03D" value="true"/>
+</engineerTo>
+<use>0</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<domain>E020BE95-29EF-17BE-9520-0EAE95DA1C60</domain>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="LATITUDE" id="B50CE064-9D29-B935-F52A-0FAD471FBE40">
+<createdBy>Lucas Sena</createdBy>
+<createdTime>2026-11-13 00:40:55 UTC</createdTime>
+<generatorID>49F68FFF-722B-081D-FA87-E0AE71201433</generatorID>
+<ownerDesignName>zeladoria_database </ownerDesignName>
+<engineerTo>
+<item key="FAFC9E71-9576-C095-C818-5CE761A1F03D" value="true"/>
+</engineerTo>
+<use>0</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<domain>959FE6D1-A2CA-B6A0-85D5-93B640091103</domain>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="LONGITUDE" id="F36C173B-E6E9-C8F8-061D-6A20AC248E2F">
+<createdBy>Lucas Sena</createdBy>
+<createdTime>2026-11-13 00:40:55 UTC</createdTime>
+<generatorID>169F377C-2A21-F9C0-DD1E-165F08AEA3F8</generatorID>
+<ownerDesignName>zeladoria_database </ownerDesignName>
+<engineerTo>
+<item key="FAFC9E71-9576-C095-C818-5CE761A1F03D" value="true"/>
+</engineerTo>
+<use>0</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<domain>959FE6D1-A2CA-B6A0-85D5-93B640091103</domain>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="BLOQUEIO TOTAL" id="F66DF415-CC6A-44B7-B5D8-3DF1CE6EBE8F">
+<createdBy>Lucas Sena</createdBy>
+<createdTime>2026-11-13 00:40:55 UTC</createdTime>
+<generatorID>26265484-C8A2-A09C-93FA-4FA8131DF8D4</generatorID>
+<ownerDesignName>zeladoria_database </ownerDesignName>
+<engineerTo>
+<item key="FAFC9E71-9576-C095-C818-5CE761A1F03D" value="true"/>
+</engineerTo>
+<use>0</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<domain>48B087BD-99CD-1F16-1DC3-9BBA133BFBEB</domain>
+<defaultValue>0</defaultValue>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="PROXIMO HOSPITAL" id="AA4239CF-76C1-7CEF-AE2F-DC62CCFB0B96">
+<createdBy>Lucas Sena</createdBy>
+<createdTime>2026-11-13 00:40:55 UTC</createdTime>
+<generatorID>01F84F7E-04F1-BE89-912D-5013510F54CE</generatorID>
+<ownerDesignName>zeladoria_database </ownerDesignName>
+<engineerTo>
+<item key="FAFC9E71-9576-C095-C818-5CE761A1F03D" value="true"/>
+</engineerTo>
+<use>0</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<domain>48B087BD-99CD-1F16-1DC3-9BBA133BFBEB</domain>
+<defaultValue>0</defaultValue>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="PROXIMO ESCOLA" id="8FC0CA70-847B-AAC1-C412-B132B3856106">
+<createdBy>Lucas Sena</createdBy>
+<createdTime>2026-11-13 00:40:55 UTC</createdTime>
+<generatorID>ECDF8238-8A47-55AD-C760-D2CF542530CD</generatorID>
+<ownerDesignName>zeladoria_database </ownerDesignName>
+<engineerTo>
+<item key="FAFC9E71-9576-C095-C818-5CE761A1F03D" value="true"/>
+</engineerTo>
+<use>0</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<domain>48B087BD-99CD-1F16-1DC3-9BBA133BFBEB</domain>
+<defaultValue>0</defaultValue>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="STATUS" id="DC02A509-A304-D1E5-2336-B9340EFFB57A">
+<createdBy>Lucas Sena</createdBy>
+<createdTime>2026-11-13 00:40:55 UTC</createdTime>
+<generatorID>1EBF18C6-A940-A4B7-64EE-951A6A8B894D</generatorID>
+<ownerDesignName>zeladoria_database </ownerDesignName>
+<engineerTo>
+<item key="FAFC9E71-9576-C095-C818-5CE761A1F03D" value="true"/>
+</engineerTo>
+<use>0</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<domain>F4765A6F-2763-2437-5FD4-BFE622F3ECB5</domain>
+<defaultValue>&apos;RECEBIDO&apos;</defaultValue>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="CRIADA EM" id="0CE8A9D4-E835-BC47-0C94-DBBEA1732509">
+<createdBy>Lucas Sena</createdBy>
+<createdTime>2026-11-13 00:40:55 UTC</createdTime>
+<generatorID>8AC05CFA-3F6E-98C5-A944-490A022CA672</generatorID>
+<ownerDesignName>zeladoria_database </ownerDesignName>
+<engineerTo>
+<item key="FAFC9E71-9576-C095-C818-5CE761A1F03D" value="true"/>
+</engineerTo>
+<use>0</use>
+<logicalDatatype>LOGDT015</logicalDatatype>
+<domain>4B3D1509-DC15-E066-0E63-21E9706083C3</domain>
+<defaultValue>CURRENT_TIMESTAMP</defaultValue>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="ATIVA" id="52603E4F-A4A9-3780-B006-9CA277F3EF70">
+<createdBy>Lucas Sena</createdBy>
+<createdTime>2026-11-13 00:40:55 UTC</createdTime>
+<generatorID>9E018DAB-1DDC-1DAC-1F86-F3FFAB6761E4</generatorID>
+<ownerDesignName>zeladoria_database </ownerDesignName>
+<engineerTo>
+<item key="FAFC9E71-9576-C095-C818-5CE761A1F03D" value="true"/>
+</engineerTo>
+<use>0</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<domain>48B087BD-99CD-1F16-1DC3-9BBA133BFBEB</domain>
+<defaultValue>1</defaultValue>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+</attributes>
+<identifiers itemClass="oracle.dbtools.crest.model.design.logical.CandidateKey">
+<identifier id="F1AC2298-1CA9-BFB2-B9B6-FB82F57AEEAE" name="PK GS OCORRENCIA">
+<createdBy>Lucas Sena</createdBy>
+<createdTime>2026-11-13 00:40:55 UTC</createdTime>
+<generatorID>F2987949-56F9-27FF-AF6A-3358CBC33CA5</generatorID>
+<ownerDesignName>zeladoria_database </ownerDesignName>
+<engineerTo>
+<item key="FAFC9E71-9576-C095-C818-5CE761A1F03D" value="true"/>
+</engineerTo>
+<pk>true</pk>
+<usedAttributes>
+<attributeRef>4BAD6792-0B11-2DD4-4616-F60A2C228669</attributeRef>
+</usedAttributes>
+</identifier>
+</identifiers>
+</Entity>

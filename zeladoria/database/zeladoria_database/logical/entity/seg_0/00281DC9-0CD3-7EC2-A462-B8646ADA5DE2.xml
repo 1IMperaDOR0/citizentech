@@ -1,0 +1,115 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Entity class="oracle.dbtools.crest.model.design.logical.Entity" directorySegmentName="seg_0" id="00281DC9-0CD3-7EC2-A462-B8646ADA5DE2" name="GS ORDEM SERVICO">
+<createdBy>Lucas Sena</createdBy>
+<createdTime>2026-11-13 00:40:55 UTC</createdTime>
+<generatorID>A6D03C28-C934-6808-AE7A-3E4B5308F44E</generatorID>
+<ownerDesignName>zeladoria_database </ownerDesignName>
+<engineerTo>
+<item key="FAFC9E71-9576-C095-C818-5CE761A1F03D" value="true"/>
+</engineerTo>
+<adequatelyNormalized>NO</adequatelyNormalized>
+<expectedVolumes>0</expectedVolumes>
+<fwdEngineeringStrategyName>Single Table</fwdEngineeringStrategyName>
+<growthPercent>0</growthPercent>
+<growthType>Year</growthType>
+<maxVolumes>9999999</maxVolumes>
+<minVolumes>0</minVolumes>
+<normalForm>Third</normalForm>
+<attributes itemClass="oracle.dbtools.crest.model.design.logical.Attribute">
+<Attribute name="ID ORDEM" id="B29DD1E2-47EB-CE2B-AE8E-2FA484610E48">
+<createdBy>Lucas Sena</createdBy>
+<createdTime>2026-11-13 00:40:55 UTC</createdTime>
+<generatorID>A24009F6-CE63-BA75-7D30-89D46777F14F</generatorID>
+<ownerDesignName>zeladoria_database </ownerDesignName>
+<engineerTo>
+<item key="FAFC9E71-9576-C095-C818-5CE761A1F03D" value="true"/>
+</engineerTo>
+<use>0</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<domain>C7EDA669-6D56-45ED-6072-98B1BC6184C9</domain>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="ID OCORRENCIA" id="D7C2CDFE-D728-8908-40A8-2CD166D7898A">
+<createdBy>Lucas Sena</createdBy>
+<createdTime>2026-11-13 00:40:55 UTC</createdTime>
+<generatorID>FB9B68C8-DC2D-D59F-7DFF-B91741B75F4A</generatorID>
+<ownerDesignName>zeladoria_database </ownerDesignName>
+<engineerTo>
+<item key="FAFC9E71-9576-C095-C818-5CE761A1F03D" value="true"/>
+</engineerTo>
+<referedAttribute>4BAD6792-0B11-2DD4-4616-F60A2C228669</referedAttribute>
+<use>0</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<domain>C7EDA669-6D56-45ED-6072-98B1BC6184C9</domain>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="EQUIPE" id="7D96EC81-DB0C-F12F-DB7F-F2ADE0F21664">
+<createdBy>Lucas Sena</createdBy>
+<createdTime>2026-11-13 00:40:55 UTC</createdTime>
+<generatorID>BEA58397-D0D7-EAC1-B5CB-873B4C962F33</generatorID>
+<ownerDesignName>zeladoria_database </ownerDesignName>
+<engineerTo>
+<item key="FAFC9E71-9576-C095-C818-5CE761A1F03D" value="true"/>
+</engineerTo>
+<use>0</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<domain>508701AA-2DC4-D9D4-E23A-ADE5FBE2ABE7</domain>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="ABERTA EM" id="033390BE-01BC-D349-0014-E69C118998BE">
+<createdBy>Lucas Sena</createdBy>
+<createdTime>2026-11-13 00:40:55 UTC</createdTime>
+<generatorID>415A1595-34E2-3E59-33E0-D6450CE4093E</generatorID>
+<ownerDesignName>zeladoria_database </ownerDesignName>
+<engineerTo>
+<item key="FAFC9E71-9576-C095-C818-5CE761A1F03D" value="true"/>
+</engineerTo>
+<use>0</use>
+<logicalDatatype>LOGDT015</logicalDatatype>
+<domain>4B3D1509-DC15-E066-0E63-21E9706083C3</domain>
+<defaultValue>CURRENT_TIMESTAMP</defaultValue>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="CONCLUIDA EM" id="CDA107FD-8CEC-3F42-6D3A-6C6FE5932B83">
+<createdBy>Lucas Sena</createdBy>
+<createdTime>2026-11-13 00:40:55 UTC</createdTime>
+<generatorID>D330C7C1-B87E-395B-B314-85921152ED97</generatorID>
+<ownerDesignName>zeladoria_database </ownerDesignName>
+<engineerTo>
+<item key="FAFC9E71-9576-C095-C818-5CE761A1F03D" value="true"/>
+</engineerTo>
+<nullsAllowed>true</nullsAllowed>
+<use>0</use>
+<logicalDatatype>LOGDT015</logicalDatatype>
+<domain>4B3D1509-DC15-E066-0E63-21E9706083C3</domain>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+</attributes>
+<identifiers itemClass="oracle.dbtools.crest.model.design.logical.CandidateKey">
+<identifier id="266769D0-4625-3F4C-69A5-0E7638E7595F" name="PK GS ORDEM">
+<createdBy>Lucas Sena</createdBy>
+<createdTime>2026-11-13 00:40:55 UTC</createdTime>
+<generatorID>70F0E711-BAEF-CE70-F3E7-F6A5B98CD3D9</generatorID>
+<ownerDesignName>zeladoria_database </ownerDesignName>
+<engineerTo>
+<item key="FAFC9E71-9576-C095-C818-5CE761A1F03D" value="true"/>
+</engineerTo>
+<pk>true</pk>
+<usedAttributes>
+<attributeRef>B29DD1E2-47EB-CE2B-AE8E-2FA484610E48</attributeRef>
+</usedAttributes>
+</identifier>
+<identifier id="E29B8616-9629-73C5-E30A-BDE80773DF88" name="UK GS ORDEM OC">
+<createdBy>Lucas Sena</createdBy>
+<createdTime>2026-11-13 00:40:55 UTC</createdTime>
+<generatorID>C1865DF7-F59B-E175-8D6E-7106805B4887</generatorID>
+<ownerDesignName>zeladoria_database </ownerDesignName>
+<engineerTo>
+<item key="FAFC9E71-9576-C095-C818-5CE761A1F03D" value="true"/>
+</engineerTo>
+<usedAttributes>
+<attributeRef>D7C2CDFE-D728-8908-40A8-2CD166D7898A</attributeRef>
+</usedAttributes>
+</identifier>
+</identifiers>
+</Entity>

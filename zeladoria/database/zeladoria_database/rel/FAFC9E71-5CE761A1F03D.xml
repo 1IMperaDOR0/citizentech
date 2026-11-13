@@ -1,0 +1,15 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<relationalModel class="oracle.dbtools.crest.model.design.relational.RelationalDesign" name="Relational_1" id="FAFC9E71-9576-C095-C818-5CE761A1F03D" mainViewID="2CA6DAF6-E64E-FD16-26D9-52F77C62D573">
+<createdBy>Lucas Sena</createdBy>
+<createdTime>2026-11-13 00:37:39 UTC</createdTime>
+<ownerDesignName>zeladoria_database </ownerDesignName>
+<shouldBeOpen>false</shouldBeOpen>
+<selectedRDBMSSite>01F6E6D1-21D0-CFBD-ABDD-3988D1813575</selectedRDBMSSite>
+<importDDLFileStamps>
+<importDDLFileStamp class="oracle.dbtools.crest.imports.DDLFileStamp">
+<fileName>01_ddl.sql</fileName>
+<pathName>C:\AllThings\projects\citizentech\zeladoria\database</pathName>
+<dbType>17</dbType>
+</importDDLFileStamp>
+</importDDLFileStamps>
+</relationalModel>

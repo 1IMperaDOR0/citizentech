@@ -1,0 +1,18 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<FKIndexAssociation class="oracle.dbtools.crest.model.design.relational.FKIndexAssociation" directorySegmentName="seg_0" id="24D66819-3060-2516-AF78-4498E5CB354D" containerWithKeyObject="4CA7F831-0471-3303-60C4-C5A3FD287EC8" localFKIndex="D11EB22F-1E94-961D-FA93-F0E2F4C563E6" name="FK_GS_O_BAIRRO">
+<sourceDDLFile>01_ddl.sql</sourceDDLFile>
+<createdBy>Lucas Sena</createdBy>
+<createdTime>2026-11-13 00:40:47 UTC</createdTime>
+<ownerDesignName>zeladoria_database </ownerDesignName>
+<importedID>0543A0B8-BDD6-155B-A5D3-923C237C1BE0</importedID>
+<referredTableLongName>GS_BAIRRO</referredTableLongName>
+<deleteRule>NO ACTION</deleteRule>
+<referredTableID>BC8DCCC4-A15D-E991-1408-1705428E54DB</referredTableID>
+<keyObject>40B216C5-5EB1-F56D-CC8D-F5929CB6B241</keyObject>
+<referredKeyID>40B216C5-5EB1-F56D-CC8D-F5929CB6B241</referredKeyID>
+<mandatory>true</mandatory>
+<refColNames>ID_BAIRRO</refColNames>
+<transferable>true</transferable>
+<rely>false</rely>
+<columnDependencyConstraintGenerateInDDL>true</columnDependencyConstraintGenerateInDDL>
+</FKIndexAssociation>

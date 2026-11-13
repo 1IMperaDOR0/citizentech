@@ -1,0 +1,68 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Table class="oracle.dbtools.crest.model.design.relational.Table" directorySegmentName="seg_0" id="3DBA6E35-8C8F-ACE9-F91E-69502408C1FC" name="GS_CATEGORIA">
+<sourceDDLFile>01_ddl.sql</sourceDDLFile>
+<createdBy>Lucas Sena</createdBy>
+<createdTime>2026-11-13 00:40:47 UTC</createdTime>
+<ownerDesignName>zeladoria_database </ownerDesignName>
+<importedID>EBA567AA-8789-01EB-8A14-28765C7E589C</importedID>
+<allowColumnReorder>false</allowColumnReorder>
+<existDependencyGenerateInDDl>true</existDependencyGenerateInDDl>
+<parsed>true</parsed>
+<columns itemClass="oracle.dbtools.crest.model.design.relational.Column">
+<Column name="ID_CATEGORIA" id="0B826A9F-1D07-98C4-9DA0-498E8C4869C9">
+<sourceDDLFile>01_ddl.sql</sourceDDLFile>
+<createdBy>Lucas Sena</createdBy>
+<createdTime>2026-11-13 00:40:47 UTC</createdTime>
+<ownerDesignName>zeladoria_database </ownerDesignName>
+<importedID>DEC796AE-D242-BFD2-83B3-6E921CDF65CB</importedID>
+<use>0</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<domain>C7EDA669-6D56-45ED-6072-98B1BC6184C9</domain>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementColumn>true</autoIncrementColumn>
+<identityColumn>true</identityColumn>
+<autoIncrementStartWith>1000</autoIncrementStartWith>
+<autoIncrementCycle>false</autoIncrementCycle>
+<autoIncrementOrder>false</autoIncrementOrder>
+</Column>
+<Column name="NOME" id="8719BCEE-6343-1930-278A-03CA156B7827">
+<sourceDDLFile>01_ddl.sql</sourceDDLFile>
+<createdBy>Lucas Sena</createdBy>
+<createdTime>2026-11-13 00:40:47 UTC</createdTime>
+<ownerDesignName>zeladoria_database </ownerDesignName>
+<importedID>087BF39C-67D9-B570-4DB4-5C48990EB9C3</importedID>
+<use>0</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<domain>D20B0977-69B4-719B-384E-4BE3645DC11C</domain>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+</columns>
+<indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">
+<ind_PK_UK id="9AE4576F-2623-A355-03A1-83C64C35321E" name="PK_GS_CATEGORIA">
+<sourceDDLFile>01_ddl.sql</sourceDDLFile>
+<createdBy>Lucas Sena</createdBy>
+<createdTime>2026-11-13 00:40:47 UTC</createdTime>
+<ownerDesignName>zeladoria_database </ownerDesignName>
+<importedID>9DA1F087-CBED-3CB6-9481-8794E8852A3A</importedID>
+<pk>true</pk>
+<indexState>Primary Constraint</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="0B826A9F-1D07-98C4-9DA0-498E8C4869C9"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="61C4E866-9200-C1A7-EA2F-359D83C150EB" name="UK_GS_CATEGORIA">
+<sourceDDLFile>01_ddl.sql</sourceDDLFile>
+<createdBy>Lucas Sena</createdBy>
+<createdTime>2026-11-13 00:40:47 UTC</createdTime>
+<ownerDesignName>zeladoria_database </ownerDesignName>
+<importedID>D605384F-59DA-39D4-B5EA-8A382A0E7664</importedID>
+<indexState>Unique Constraint</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="8719BCEE-6343-1930-278A-03CA156B7827"/>
+</indexColumnUsage>
+</ind_PK_UK>
+</indexes>
+</Table>

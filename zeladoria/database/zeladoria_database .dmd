@@ -1,0 +1,13 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<OSDM_Design class="oracle.dbtools.crest.model.design.Design" name="zeladoria_database " id="79AF1B1B-EA4A-3504-53D7-03E93B267F2C" version="3.5">
+<createdBy>Lucas Sena</createdBy>
+<createdTime>2026-11-13 00:37:37 UTC</createdTime>
+<ownerDesignName>zeladoria_database </ownerDesignName>
+<capitalNames>false</capitalNames>
+<designId>79AF1B1B-EA4A-3504-53D7-03E93B267F2C</designId>
+<usedDesignStorageDescriptors>
+<designDescr class="oracle.dbtools.crest.model.design.Design$DesignStorageDesc" id="AA40CB5F-5A14-26B4-86CD-AB1E11D75DE6">
+<designStoragePath>C:\01_ddl</designStoragePath>
+</designDescr>
+</usedDesignStorageDescriptors>
+</OSDM_Design>

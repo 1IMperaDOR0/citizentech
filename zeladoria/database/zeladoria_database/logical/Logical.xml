@@ -1,0 +1,7 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<LogicalDesign class="oracle.dbtools.crest.model.design.logical.LogicalDesign" name="Logical" id="3B8C07B0-129B-900B-4235-95F125536DA4" mainViewID="21743B78-B055-713E-7CD7-ACF2B3D6DEC6">
+<createdBy>Lucas Sena</createdBy>
+<createdTime>2026-11-13 00:37:37 UTC</createdTime>
+<ownerDesignName>zeladoria_database </ownerDesignName>
+<shouldBeOpen>false</shouldBeOpen>
+</LogicalDesign>
