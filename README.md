@@ -360,11 +360,7 @@ O MVP não possui frontend funcional, geocodificação, reconhecimento de imagem
 
 A documentação contempla objetivo, escopo, modelo de dados, diagramas de classes, protótipos de tela, endpoints e instruções de execução. Os arquivos de apoio estão em `docs/`.
 
-Para a entrega acadêmica, inserir os diagramas finais exportados do Oracle Data Modeler, preencher nomes e RMs e atualizar os links de GitHub e deploy. O documento Java deve refletir a versão final do código.
-
 ## Equipe
-
-Preencher com os integrantes em ordem alfabética e ajustar a quantidade de linhas.
 
 | Integrante | RM |
 |---|---|
