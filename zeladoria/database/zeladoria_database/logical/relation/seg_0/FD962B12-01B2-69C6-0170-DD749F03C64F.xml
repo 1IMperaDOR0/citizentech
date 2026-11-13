@@ -1,0 +1,20 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Relation class="oracle.dbtools.crest.model.design.logical.Relation" name="FK_GS_R_CIDADAO" directorySegmentName="seg_0" id="FD962B12-01B2-69C6-0170-DD749F03C64F">
+<createdBy>Lucas Sena</createdBy>
+<createdTime>2026-11-13 00:40:55 UTC</createdTime>
+<generatorID>23D700AE-DF74-1097-6C9B-CF9D0618DB49</generatorID>
+<ownerDesignName>zeladoria_database </ownerDesignName>
+<engineerTo>
+<item key="FAFC9E71-9576-C095-C818-5CE761A1F03D" value="true"/>
+</engineerTo>
+<sourcePk>49081B22-72C6-3243-F8C8-0B41F5BCE5AD</sourcePk>
+<identifying>false</identifying>
+<optionalSource>true</optionalSource>
+<optionalTarget>false</optionalTarget>
+<sourceCardinality>1</sourceCardinality>
+<sourceEntity>0831667D-2220-B789-839B-7146A3F1DE7E</sourceEntity>
+<targetCardinalityString>*</targetCardinalityString>
+<targetEntity>BBE20029-0E64-197D-4C0A-9D8CC45B1C1C</targetEntity>
+<transferable>true</transferable>
+<deleteRule>NO ACTION</deleteRule>
+</Relation>

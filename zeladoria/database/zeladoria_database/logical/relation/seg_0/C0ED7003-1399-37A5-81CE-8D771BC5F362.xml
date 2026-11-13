@@ -1,0 +1,20 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Relation class="oracle.dbtools.crest.model.design.logical.Relation" name="FK_GS_R_OCORRENCIA" directorySegmentName="seg_0" id="C0ED7003-1399-37A5-81CE-8D771BC5F362">
+<createdBy>Lucas Sena</createdBy>
+<createdTime>2026-11-13 00:40:55 UTC</createdTime>
+<generatorID>9C73F1D7-22E9-49E4-EBAF-F709E0AAD70A</generatorID>
+<ownerDesignName>zeladoria_database </ownerDesignName>
+<engineerTo>
+<item key="FAFC9E71-9576-C095-C818-5CE761A1F03D" value="true"/>
+</engineerTo>
+<sourcePk>F1AC2298-1CA9-BFB2-B9B6-FB82F57AEEAE</sourcePk>
+<identifying>false</identifying>
+<optionalSource>true</optionalSource>
+<optionalTarget>false</optionalTarget>
+<sourceCardinality>1</sourceCardinality>
+<sourceEntity>EBB409B6-2711-CFE5-3DF6-D4989CE19B9F</sourceEntity>
+<targetCardinalityString>*</targetCardinalityString>
+<targetEntity>BBE20029-0E64-197D-4C0A-9D8CC45B1C1C</targetEntity>
+<transferable>true</transferable>
+<deleteRule>NO ACTION</deleteRule>
+</Relation>

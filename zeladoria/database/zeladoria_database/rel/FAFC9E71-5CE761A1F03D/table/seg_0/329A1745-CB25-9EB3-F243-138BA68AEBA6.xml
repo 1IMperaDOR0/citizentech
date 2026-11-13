@@ -1,0 +1,160 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Table class="oracle.dbtools.crest.model.design.relational.Table" directorySegmentName="seg_0" id="329A1745-CB25-9EB3-F243-138BA68AEBA6" name="GS_HISTORICO_STATUS">
+<sourceDDLFile>01_ddl.sql</sourceDDLFile>
+<createdBy>Lucas Sena</createdBy>
+<createdTime>2026-11-13 00:40:47 UTC</createdTime>
+<ownerDesignName>zeladoria_database </ownerDesignName>
+<importedID>08F2B124-9F3C-2E82-CA23-9738579FD63D</importedID>
+<allowColumnReorder>false</allowColumnReorder>
+<existDependencyGenerateInDDl>true</existDependencyGenerateInDDl>
+<parsed>true</parsed>
+<columns itemClass="oracle.dbtools.crest.model.design.relational.Column">
+<Column name="ID_HISTORICO" id="B6C71939-70FE-E4B3-DFEC-9D98DCF519ED">
+<sourceDDLFile>01_ddl.sql</sourceDDLFile>
+<createdBy>Lucas Sena</createdBy>
+<createdTime>2026-11-13 00:40:47 UTC</createdTime>
+<ownerDesignName>zeladoria_database </ownerDesignName>
+<importedID>5D26AFE7-331E-9899-51C3-5811D2F81822</importedID>
+<use>0</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<domain>C7EDA669-6D56-45ED-6072-98B1BC6184C9</domain>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementColumn>true</autoIncrementColumn>
+<identityColumn>true</identityColumn>
+<autoIncrementStartWith>1000</autoIncrementStartWith>
+<autoIncrementCycle>false</autoIncrementCycle>
+<autoIncrementOrder>false</autoIncrementOrder>
+</Column>
+<Column name="ID_OCORRENCIA" id="0402F85F-6EE7-0D48-3576-82BECDDCA764">
+<sourceDDLFile>01_ddl.sql</sourceDDLFile>
+<createdBy>Lucas Sena</createdBy>
+<createdTime>2026-11-13 00:40:47 UTC</createdTime>
+<ownerDesignName>zeladoria_database </ownerDesignName>
+<importedID>ABBC62DF-8FF4-4F63-A8EB-1336CA4FDA6E</importedID>
+<use>0</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<domain>C7EDA669-6D56-45ED-6072-98B1BC6184C9</domain>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="D691B7DD-D8A1-88F8-6D75-E32F10FB8111" referredColumn="ED5927F8-915F-C891-1153-0263EF751930"/>
+</associations>
+</Column>
+<Column name="STATUS_ANTERIOR" id="3BA3C367-B7A0-DDFB-A3E2-8E177804CB9F">
+<sourceDDLFile>01_ddl.sql</sourceDDLFile>
+<createdBy>Lucas Sena</createdBy>
+<createdTime>2026-11-13 00:40:47 UTC</createdTime>
+<ownerDesignName>zeladoria_database </ownerDesignName>
+<importedID>264133FA-F3D2-0AE3-C7CF-F6A75A5233BF</importedID>
+<nullsAllowed>true</nullsAllowed>
+<use>0</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<domain>F4765A6F-2763-2437-5FD4-BFE622F3ECB5</domain>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="STATUS_NOVO" id="CFA43F1F-296B-A098-58EE-23B6A97CE674">
+<sourceDDLFile>01_ddl.sql</sourceDDLFile>
+<createdBy>Lucas Sena</createdBy>
+<createdTime>2026-11-13 00:40:47 UTC</createdTime>
+<ownerDesignName>zeladoria_database </ownerDesignName>
+<importedID>0F722889-82B1-84AB-E909-955BB977CA4F</importedID>
+<use>0</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<domain>F4765A6F-2763-2437-5FD4-BFE622F3ECB5</domain>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="RESPONSAVEL" id="6DA85101-78F1-51BD-06C2-CF7021E17F94">
+<sourceDDLFile>01_ddl.sql</sourceDDLFile>
+<createdBy>Lucas Sena</createdBy>
+<createdTime>2026-11-13 00:40:47 UTC</createdTime>
+<ownerDesignName>zeladoria_database </ownerDesignName>
+<importedID>AEA18EE1-4825-3663-8FDB-F5FF79B1AB6D</importedID>
+<use>0</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<domain>E8BBCE83-697E-3154-E003-58A02DB3D4EB</domain>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="OBSERVACAO" id="A3F47FD3-8476-552E-6B37-B4BC17C1BDB6">
+<sourceDDLFile>01_ddl.sql</sourceDDLFile>
+<createdBy>Lucas Sena</createdBy>
+<createdTime>2026-11-13 00:40:47 UTC</createdTime>
+<ownerDesignName>zeladoria_database </ownerDesignName>
+<importedID>3E613B1A-3351-27C5-2777-6A55E2988A01</importedID>
+<use>0</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<domain>4797CEDD-7EEF-BBA3-37BF-CB37FC522F7B</domain>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="ALTERADO_EM" id="BE3839B6-DC8D-C6FF-407A-A1FC3C501575">
+<sourceDDLFile>01_ddl.sql</sourceDDLFile>
+<createdBy>Lucas Sena</createdBy>
+<createdTime>2026-11-13 00:40:47 UTC</createdTime>
+<ownerDesignName>zeladoria_database </ownerDesignName>
+<importedID>0A199CB6-53B0-3B40-AC4C-645BC4A623EA</importedID>
+<use>0</use>
+<logicalDatatype>LOGDT015</logicalDatatype>
+<domain>4B3D1509-DC15-E066-0E63-21E9706083C3</domain>
+<defaultValue>CURRENT_TIMESTAMP</defaultValue>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+</columns>
+<indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">
+<ind_PK_UK id="0F242620-88A2-EC37-308B-0EB607AE3501" name="PK_GS_HISTORICO">
+<sourceDDLFile>01_ddl.sql</sourceDDLFile>
+<createdBy>Lucas Sena</createdBy>
+<createdTime>2026-11-13 00:40:47 UTC</createdTime>
+<ownerDesignName>zeladoria_database </ownerDesignName>
+<importedID>AD0AFE69-64FF-2C76-E4D8-7E431E1F7A3A</importedID>
+<pk>true</pk>
+<indexState>Primary Constraint</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="B6C71939-70FE-E4B3-DFEC-9D98DCF519ED"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="F6ABEC27-DF82-5FFE-B284-9EA121B337C5" name="IX_GS_H_OCORRENCIA">
+<sourceDDLFile>01_ddl.sql</sourceDDLFile>
+<createdBy>Lucas Sena</createdBy>
+<createdTime>2026-11-13 00:40:47 UTC</createdTime>
+<ownerDesignName>zeladoria_database </ownerDesignName>
+<importedID>97F35DAC-247D-ACA4-75E3-22EC8D73CC29</importedID>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="0402F85F-6EE7-0D48-3576-82BECDDCA764"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="D173F1C6-9907-AE7E-75E2-64E667AE68AF" name="FK_GS_H_OCORRENCIA">
+<createdBy>Lucas Sena</createdBy>
+<createdTime>2026-11-13 00:40:47 UTC</createdTime>
+<ownerDesignName>zeladoria_database </ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="0402F85F-6EE7-0D48-3576-82BECDDCA764"/>
+</indexColumnUsage>
+</ind_PK_UK>
+</indexes>
+<tableCheckConstraints itemClass="oracle.dbtools.crest.model.design.constraint.TableLevelConstraint">
+<tableCheckConstraint name="CK_GS_H_ANTERIOR" directorySegmentName="seg_0" id="96A1DE53-3DC5-001B-041F-14DC7EE7C2BD">
+<sourceDDLFile>01_ddl.sql</sourceDDLFile>
+<createdBy>Lucas Sena</createdBy>
+<createdTime>2026-11-13 00:40:47 UTC</createdTime>
+<ownerDesignName>zeladoria_database </ownerDesignName>
+<importedID>5D7D7E0E-5ADF-0A50-4ABF-02629EBAD2F3</importedID>
+<rule><![CDATA[STATUS_ANTERIOR IN ('RECEBIDO','EM_ANALISE','EM_MANUTENCAO','CONCLUIDO')]]></rule>
+</tableCheckConstraint>
+<tableCheckConstraint name="CK_GS_H_NOVO" directorySegmentName="seg_0" id="2EEEC960-364B-BD4C-C072-3EAC712563B5">
+<sourceDDLFile>01_ddl.sql</sourceDDLFile>
+<createdBy>Lucas Sena</createdBy>
+<createdTime>2026-11-13 00:40:47 UTC</createdTime>
+<ownerDesignName>zeladoria_database </ownerDesignName>
+<importedID>1BFA534C-1919-7826-3688-70C19B836E59</importedID>
+<rule><![CDATA[STATUS_NOVO IN ('RECEBIDO','EM_ANALISE','EM_MANUTENCAO','CONCLUIDO')]]></rule>
+</tableCheckConstraint>
+</tableCheckConstraints>
+</Table>
