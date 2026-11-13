@@ -1,0 +1,1077 @@
+{
+  "info": {
+    "name": "CitizenTech - Zeladoria e Manutenção Urbana | Oracle FIAP",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": "Coleção de teste da API desenvolvida para a GS FIAP.\n\n1. Mantenha a aplicação em execução no IntelliJ.\n2. Nas variáveis da coleção, confira baseUrl=http://localhost:8081 e preencha usuarioGestor e senhaGestor com ADMIN_USER e ADMIN_PASSWORD. Salve os valores localmente, sem compartilhar senhas.\n3. Execute as pastas e as requisições na ordem numérica. Os IDs são capturados automaticamente após cada criação bem-sucedida.\n4. bairroId, categoriaId e cidadaoId começam em 1, conforme carga SQL. Ajuste se seu banco tiver outros IDs.\n\nUsa conta de gestor para todas as escritas. Não exige configurar a conta cidadã opcional. Retornos 409 e 404 identificados nos nomes são esperados. Foto usa URL fictícia: não há upload. Cada repetição completa cria dois registros novos e arquiva o segundo. Coleção validada estruturalmente; não foi executada contra seu localhost, que só é acessível na sua máquina."
+  },
+  "auth": {
+    "type": "basic",
+    "basic": [
+      {
+        "key": "username",
+        "value": "{{usuarioGestor}}",
+        "type": "string"
+      },
+      {
+        "key": "password",
+        "value": "{{senhaGestor}}",
+        "type": "string"
+      }
+    ]
+  },
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "http://localhost:8081",
+      "type": "string"
+    },
+    {
+      "key": "usuarioGestor",
+      "value": "",
+      "type": "string"
+    },
+    {
+      "key": "senhaGestor",
+      "value": "",
+      "type": "string"
+    },
+    {
+      "key": "bairroId",
+      "value": "1",
+      "type": "string"
+    },
+    {
+      "key": "categoriaId",
+      "value": "1",
+      "type": "string"
+    },
+    {
+      "key": "cidadaoId",
+      "value": "1",
+      "type": "string"
+    },
+    {
+      "key": "ocorrenciaId",
+      "value": "",
+      "type": "string"
+    },
+    {
+      "key": "ocorrenciaArquivarId",
+      "value": "",
+      "type": "string"
+    }
+  ],
+  "item": [
+    {
+      "name": "01 - Consultas públicas",
+      "item": [
+        {
+          "name": "01 - Saúde da aplicação",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/actuator/health",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "actuator",
+                "health"
+              ]
+            },
+            "description": "",
+            "auth": {
+              "type": "noauth"
+            }
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"HTTP 200\", function () { pm.response.to.have.status(200); });",
+                  "pm.test(\"Aplicação e banco UP\", function () { pm.expect(pm.response.json().status).to.eql(\"UP\"); });"
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "name": "02 - Bairros",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/api/bairros",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "bairros"
+              ]
+            },
+            "description": "",
+            "auth": {
+              "type": "noauth"
+            }
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"HTTP 200\", function () { pm.response.to.have.status(200); });"
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "name": "03 - Categorias",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/api/categorias",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "categorias"
+              ]
+            },
+            "description": "",
+            "auth": {
+              "type": "noauth"
+            }
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"HTTP 200\", function () { pm.response.to.have.status(200); });"
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "name": "04 - Ocorrências",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/api/ocorrencias?limite=100",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "ocorrencias"
+              ],
+              "query": [
+                {
+                  "key": "limite",
+                  "value": "100"
+                }
+              ]
+            },
+            "description": "",
+            "auth": {
+              "type": "noauth"
+            }
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"HTTP 200\", function () { pm.response.to.have.status(200); });"
+                ]
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "02 - Ciclo completo de manutenção",
+      "description": "Executar em ordem. Usa autenticação de gestor herdada da coleção. Os retornos 409 das tentativas inválidas são esperados e têm testes próprios. Para repetir o fluxo, comece novamente pela criação de ocorrência.",
+      "item": [
+        {
+          "name": "01 - Criar ocorrência e salvar ID",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/api/ocorrencias",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "ocorrencias"
+              ]
+            },
+            "description": "Cria um novo registro de teste. Captura resposta.ocorrencia.id em ocorrenciaId; as chamadas seguintes usam esse ID.",
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"dados\": {\n    \"bairroId\": {{bairroId}},\n    \"categoriaId\": {{categoriaId}},\n    \"descricao\": \"Teste Postman - calçada com passagem bloqueada\",\n    \"latitude\": -23.5501,\n    \"longitude\": -46.6301,\n    \"bloqueioTotal\": true,\n    \"proximoHospital\": true,\n    \"proximoEscola\": false\n  },\n  \"relato\": {\n    \"cidadaoId\": {{cidadaoId}},\n    \"descricao\": \"Registro fictício para testar o ciclo de manutenção\",\n    \"fotoUrl\": \"https://example.org/foto-local.jpg\"\n  }\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "event": [
+            {
+              "listen": "prerequest",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.collectionVariables.unset(\"ocorrenciaId\");"
+                ]
+              }
+            },
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"HTTP 201\", function () { pm.response.to.have.status(201); });",
+                  "if (pm.response.code === 201) {",
+                  "  const resposta = pm.response.json();",
+                  "  const id = resposta.ocorrencia.id;",
+                  "  pm.test(\"ID válido\", function () { pm.expect(id).to.be.a(\"number\").above(0); });",
+                  "  if (Number.isInteger(id) && id > 0) pm.collectionVariables.set(\"ocorrenciaId\", String(id));",
+                  "}"
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "name": "02 - Consultar ocorrência criada",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/api/ocorrencias/{{ocorrenciaId}}",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "ocorrencias",
+                "{{ocorrenciaId}}"
+              ]
+            },
+            "description": "",
+            "auth": {
+              "type": "noauth"
+            }
+          },
+          "event": [
+            {
+              "listen": "prerequest",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "const id = pm.collectionVariables.get(\"ocorrenciaId\");",
+                  "if (!id || !/^\\d+$/.test(String(id))) throw new Error(\"Execute primeiro a criação que preenche ocorrenciaId.\");"
+                ]
+              }
+            },
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"HTTP 200\", function () { pm.response.to.have.status(200); });"
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "name": "03 - Sugerir ocorrências próximas",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/api/ocorrencias/semelhantes?categoriaId={{categoriaId}}&latitude=-23.550100&longitude=-46.630100",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "ocorrencias",
+                "semelhantes"
+              ],
+              "query": [
+                {
+                  "key": "categoriaId",
+                  "value": "{{categoriaId}}"
+                },
+                {
+                  "key": "latitude",
+                  "value": "-23.550100"
+                },
+                {
+                  "key": "longitude",
+                  "value": "-46.630100"
+                }
+              ]
+            },
+            "description": "",
+            "auth": {
+              "type": "noauth"
+            }
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"HTTP 200\", function () { pm.response.to.have.status(200); });"
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "name": "04 - Adicionar outro relato",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/api/ocorrencias/{{ocorrenciaId}}/relatos",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "ocorrencias",
+                "{{ocorrenciaId}}",
+                "relatos"
+              ]
+            },
+            "description": "",
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"cidadaoId\": {{cidadaoId}},\n  \"descricao\": \"Registro fictício para testar o ciclo de manutenção\",\n  \"fotoUrl\": \"https://example.org/foto-local.jpg\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "event": [
+            {
+              "listen": "prerequest",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "const id = pm.collectionVariables.get(\"ocorrenciaId\");",
+                  "if (!id || !/^\\d+$/.test(String(id))) throw new Error(\"Execute primeiro a criação que preenche ocorrenciaId.\");"
+                ]
+              }
+            },
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"HTTP 201\", function () { pm.response.to.have.status(201); });"
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "name": "05 - Editar dados",
+          "request": {
+            "method": "PUT",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/api/ocorrencias/{{ocorrenciaId}}",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "ocorrencias",
+                "{{ocorrenciaId}}"
+              ]
+            },
+            "description": "",
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"bairroId\": {{bairroId}},\n  \"categoriaId\": {{categoriaId}},\n  \"descricao\": \"Teste Postman - bloqueio confirmado na triagem\",\n  \"latitude\": -23.5501,\n  \"longitude\": -46.6301,\n  \"bloqueioTotal\": true,\n  \"proximoHospital\": true,\n  \"proximoEscola\": false\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "event": [
+            {
+              "listen": "prerequest",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "const id = pm.collectionVariables.get(\"ocorrenciaId\");",
+                  "if (!id || !/^\\d+$/.test(String(id))) throw new Error(\"Execute primeiro a criação que preenche ocorrenciaId.\");"
+                ]
+              }
+            },
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"HTTP 200\", function () { pm.response.to.have.status(200); });"
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "name": "06 - Tentar concluir sem análise (esperado 409)",
+          "request": {
+            "method": "PUT",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/api/ocorrencias/{{ocorrenciaId}}/status",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "ocorrencias",
+                "{{ocorrenciaId}}",
+                "status"
+              ]
+            },
+            "description": "",
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"status\": \"CONCLUIDO\",\n  \"observacao\": \"Teste de regra: salto de etapa deve ser rejeitado\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "event": [
+            {
+              "listen": "prerequest",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "const id = pm.collectionVariables.get(\"ocorrenciaId\");",
+                  "if (!id || !/^\\d+$/.test(String(id))) throw new Error(\"Execute primeiro a criação que preenche ocorrenciaId.\");"
+                ]
+              }
+            },
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"HTTP 409\", function () { pm.response.to.have.status(409); });"
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "name": "07 - Iniciar análise",
+          "request": {
+            "method": "PUT",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/api/ocorrencias/{{ocorrenciaId}}/status",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "ocorrencias",
+                "{{ocorrenciaId}}",
+                "status"
+              ]
+            },
+            "description": "",
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"status\": \"EM_ANALISE\",\n  \"observacao\": \"Teste Postman - Iniciar análise\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "event": [
+            {
+              "listen": "prerequest",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "const id = pm.collectionVariables.get(\"ocorrenciaId\");",
+                  "if (!id || !/^\\d+$/.test(String(id))) throw new Error(\"Execute primeiro a criação que preenche ocorrenciaId.\");"
+                ]
+              }
+            },
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"HTTP 200\", function () { pm.response.to.have.status(200); });",
+                  "if (pm.response.code === 200) pm.test(\"Estado EM_ANALISE\", function () { pm.expect(pm.response.json().ocorrencia.status).to.eql(\"EM_ANALISE\"); });"
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "name": "08 - Tentar manutenção sem OS (esperado 409)",
+          "request": {
+            "method": "PUT",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/api/ocorrencias/{{ocorrenciaId}}/status",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "ocorrencias",
+                "{{ocorrenciaId}}",
+                "status"
+              ]
+            },
+            "description": "",
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"status\": \"EM_MANUTENCAO\",\n  \"observacao\": \"Teste de regra: OS obrigatória\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "event": [
+            {
+              "listen": "prerequest",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "const id = pm.collectionVariables.get(\"ocorrenciaId\");",
+                  "if (!id || !/^\\d+$/.test(String(id))) throw new Error(\"Execute primeiro a criação que preenche ocorrenciaId.\");"
+                ]
+              }
+            },
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"HTTP 409\", function () { pm.response.to.have.status(409); });"
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "name": "09 - Abrir ordem de serviço",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/api/ocorrencias/{{ocorrenciaId}}/ordens-servico",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "ocorrencias",
+                "{{ocorrenciaId}}",
+                "ordens-servico"
+              ]
+            },
+            "description": "",
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"equipe\": \"Equipe Centro - demonstração\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "event": [
+            {
+              "listen": "prerequest",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "const id = pm.collectionVariables.get(\"ocorrenciaId\");",
+                  "if (!id || !/^\\d+$/.test(String(id))) throw new Error(\"Execute primeiro a criação que preenche ocorrenciaId.\");"
+                ]
+              }
+            },
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"HTTP 201\", function () { pm.response.to.have.status(201); });"
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "name": "10 - Iniciar manutenção",
+          "request": {
+            "method": "PUT",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/api/ocorrencias/{{ocorrenciaId}}/status",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "ocorrencias",
+                "{{ocorrenciaId}}",
+                "status"
+              ]
+            },
+            "description": "",
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"status\": \"EM_MANUTENCAO\",\n  \"observacao\": \"Teste Postman - Iniciar manutenção\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "event": [
+            {
+              "listen": "prerequest",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "const id = pm.collectionVariables.get(\"ocorrenciaId\");",
+                  "if (!id || !/^\\d+$/.test(String(id))) throw new Error(\"Execute primeiro a criação que preenche ocorrenciaId.\");"
+                ]
+              }
+            },
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"HTTP 200\", function () { pm.response.to.have.status(200); });",
+                  "if (pm.response.code === 200) pm.test(\"Estado EM_MANUTENCAO\", function () { pm.expect(pm.response.json().ocorrencia.status).to.eql(\"EM_MANUTENCAO\"); });"
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "name": "11 - Concluir reparo",
+          "request": {
+            "method": "PUT",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/api/ocorrencias/{{ocorrenciaId}}/status",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "ocorrencias",
+                "{{ocorrenciaId}}",
+                "status"
+              ]
+            },
+            "description": "",
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"status\": \"CONCLUIDO\",\n  \"observacao\": \"Teste Postman - Concluir reparo\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "event": [
+            {
+              "listen": "prerequest",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "const id = pm.collectionVariables.get(\"ocorrenciaId\");",
+                  "if (!id || !/^\\d+$/.test(String(id))) throw new Error(\"Execute primeiro a criação que preenche ocorrenciaId.\");"
+                ]
+              }
+            },
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"HTTP 200\", function () { pm.response.to.have.status(200); });",
+                  "if (pm.response.code === 200) pm.test(\"Estado CONCLUIDO\", function () { pm.expect(pm.response.json().ocorrencia.status).to.eql(\"CONCLUIDO\"); });"
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "name": "12 - Histórico público",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/api/ocorrencias/{{ocorrenciaId}}/historico",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "ocorrencias",
+                "{{ocorrenciaId}}",
+                "historico"
+              ]
+            },
+            "description": "",
+            "auth": {
+              "type": "noauth"
+            }
+          },
+          "event": [
+            {
+              "listen": "prerequest",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "const id = pm.collectionVariables.get(\"ocorrenciaId\");",
+                  "if (!id || !/^\\d+$/.test(String(id))) throw new Error(\"Execute primeiro a criação que preenche ocorrenciaId.\");"
+                ]
+              }
+            },
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"HTTP 200\", function () { pm.response.to.have.status(200); });"
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "name": "13 - Relatos (gestor)",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/api/gestao/ocorrencias/{{ocorrenciaId}}/relatos",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "gestao",
+                "ocorrencias",
+                "{{ocorrenciaId}}",
+                "relatos"
+              ]
+            },
+            "description": ""
+          },
+          "event": [
+            {
+              "listen": "prerequest",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "const id = pm.collectionVariables.get(\"ocorrenciaId\");",
+                  "if (!id || !/^\\d+$/.test(String(id))) throw new Error(\"Execute primeiro a criação que preenche ocorrenciaId.\");"
+                ]
+              }
+            },
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"HTTP 200\", function () { pm.response.to.have.status(200); });"
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "name": "14 - Ordem e data de conclusão (gestor)",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/api/gestao/ocorrencias/{{ocorrenciaId}}/ordens-servico",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "gestao",
+                "ocorrencias",
+                "{{ocorrenciaId}}",
+                "ordens-servico"
+              ]
+            },
+            "description": ""
+          },
+          "event": [
+            {
+              "listen": "prerequest",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "const id = pm.collectionVariables.get(\"ocorrenciaId\");",
+                  "if (!id || !/^\\d+$/.test(String(id))) throw new Error(\"Execute primeiro a criação que preenche ocorrenciaId.\");"
+                ]
+              }
+            },
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"HTTP 200\", function () { pm.response.to.have.status(200); });"
+                ]
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "03 - Arquivamento lógico (DELETE)",
+      "description": "Cria OUTRA ocorrência, ainda RECEBIDO. Não exclui os registros da carga nem a ocorrência concluída do fluxo anterior.",
+      "item": [
+        {
+          "name": "01 - Criar outra ocorrência para arquivar",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/api/ocorrencias",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "ocorrencias"
+              ]
+            },
+            "description": "",
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"dados\": {\n    \"bairroId\": {{bairroId}},\n    \"categoriaId\": {{categoriaId}},\n    \"descricao\": \"Teste Postman - registro destinado a arquivamento\",\n    \"latitude\": -23.5501,\n    \"longitude\": -46.6301,\n    \"bloqueioTotal\": true,\n    \"proximoHospital\": true,\n    \"proximoEscola\": false\n  },\n  \"relato\": {\n    \"cidadaoId\": {{cidadaoId}},\n    \"descricao\": \"Registro fictício para testar o ciclo de manutenção\",\n    \"fotoUrl\": \"https://example.org/foto-local.jpg\"\n  }\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "event": [
+            {
+              "listen": "prerequest",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.collectionVariables.unset(\"ocorrenciaArquivarId\");"
+                ]
+              }
+            },
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"HTTP 201\", function () { pm.response.to.have.status(201); });",
+                  "if (pm.response.code === 201) {",
+                  "  const resposta = pm.response.json();",
+                  "  const id = resposta.ocorrencia.id;",
+                  "  pm.test(\"ID válido\", function () { pm.expect(id).to.be.a(\"number\").above(0); });",
+                  "  if (Number.isInteger(id) && id > 0) pm.collectionVariables.set(\"ocorrenciaArquivarId\", String(id));",
+                  "}"
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "name": "02 - Arquivar ocorrência recebida",
+          "request": {
+            "method": "DELETE",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/api/ocorrencias/{{ocorrenciaArquivarId}}",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "ocorrencias",
+                "{{ocorrenciaArquivarId}}"
+              ]
+            },
+            "description": ""
+          },
+          "event": [
+            {
+              "listen": "prerequest",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "const id = pm.collectionVariables.get(\"ocorrenciaArquivarId\");",
+                  "if (!id || !/^\\d+$/.test(String(id))) throw new Error(\"Execute primeiro a criação que preenche ocorrenciaArquivarId.\");"
+                ]
+              }
+            },
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"HTTP 204\", function () { pm.response.to.have.status(204); });"
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "name": "03 - Confirmar que ficou indisponível (esperado 404)",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/api/ocorrencias/{{ocorrenciaArquivarId}}",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "ocorrencias",
+                "{{ocorrenciaArquivarId}}"
+              ]
+            },
+            "description": "",
+            "auth": {
+              "type": "noauth"
+            }
+          },
+          "event": [
+            {
+              "listen": "prerequest",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "const id = pm.collectionVariables.get(\"ocorrenciaArquivarId\");",
+                  "if (!id || !/^\\d+$/.test(String(id))) throw new Error(\"Execute primeiro a criação que preenche ocorrenciaArquivarId.\");"
+                ]
+              }
+            },
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"HTTP 404\", function () { pm.response.to.have.status(404); });"
+                ]
+              }
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

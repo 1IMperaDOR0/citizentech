@@ -1,0 +1,82 @@
+### Abra no cliente HTTP da IDE ou adapte para Postman/Insomnia.
+### Defina baseUrl, basicGestor (base64 de usuario:senha) e basicCidadao no ambiente privado.
+### Não salvar credenciais reais neste arquivo.
+@baseUrl = http://localhost:8080
+@id = 1000
+
+### Consulta pública
+GET {{baseUrl}}/api/ocorrencias
+
+### Criar ocorrência (conta cidadã do exemplo deve corresponder ao cidadão 1)
+POST {{baseUrl}}/api/ocorrencias
+Authorization: Basic {{basicCidadao}}
+Content-Type: application/json
+
+{
+ "dados": {
+  "bairroId": 1, "categoriaId": 1,
+  "descricao": "Calçada com passagem totalmente bloqueada",
+  "latitude": -23.550100, "longitude": -46.630100,
+  "bloqueioTotal": true, "proximoHospital": true, "proximoEscola": false
+ },
+ "relato": {
+  "cidadaoId": 1, "descricao": "Trecho impede a passagem de cadeira de rodas",
+  "fotoUrl": "https://example.org/foto-local.jpg"
+ }
+}
+
+### Copie o ID retornado para a variável id acima; 1000 é apenas exemplo.
+GET {{baseUrl}}/api/ocorrencias/semelhantes?categoriaId=1&latitude=-23.550100&longitude=-46.630100
+
+### Vincular outro relato à mesma ocorrência
+POST {{baseUrl}}/api/ocorrencias/{{id}}/relatos
+Authorization: Basic {{basicCidadao}}
+Content-Type: application/json
+
+{"cidadaoId":1,"descricao":"Nova evidência do mesmo local","fotoUrl":"https://example.org/outra-foto.jpg"}
+
+### Atualizar dados antes da manutenção
+PUT {{baseUrl}}/api/ocorrencias/{{id}}
+Authorization: Basic {{basicGestor}}
+Content-Type: application/json
+
+{"bairroId":1,"categoriaId":1,"descricao":"Bloqueio confirmado na triagem","latitude":-23.550100,"longitude":-46.630100,"bloqueioTotal":true,"proximoHospital":true,"proximoEscola":false}
+
+### Iniciar análise
+PUT {{baseUrl}}/api/ocorrencias/{{id}}/status
+Authorization: Basic {{basicGestor}}
+Content-Type: application/json
+
+{"status":"EM_ANALISE","observacao":"Dados verificados pela equipe"}
+
+### Abrir OS
+POST {{baseUrl}}/api/ocorrencias/{{id}}/ordens-servico
+Authorization: Basic {{basicGestor}}
+Content-Type: application/json
+
+{"equipe":"Equipe de manutenção Centro"}
+
+### Iniciar manutenção
+PUT {{baseUrl}}/api/ocorrencias/{{id}}/status
+Authorization: Basic {{basicGestor}}
+Content-Type: application/json
+
+{"status":"EM_MANUTENCAO","observacao":"Equipe deslocada ao local"}
+
+### Concluir
+PUT {{baseUrl}}/api/ocorrencias/{{id}}/status
+Authorization: Basic {{basicGestor}}
+Content-Type: application/json
+
+{"status":"CONCLUIDO","observacao":"Reparo concluído"}
+
+### Histórico público
+GET {{baseUrl}}/api/ocorrencias/{{id}}/historico
+
+### OS restrita
+GET {{baseUrl}}/api/gestao/ocorrencias/{{id}}/ordens-servico
+Authorization: Basic {{basicGestor}}
+
+### DELETE: usar ID de OUTRA ocorrência ainda RECEBIDO; concluída retorna 409.
+DELETE {{baseUrl}}/api/ocorrencias/{{idRecebido}}
+Authorization: Basic {{basicGestor}}
