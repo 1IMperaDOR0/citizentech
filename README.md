@@ -1,6 +1,22 @@
 # 🌎 CitizenTech: Zeladoria e Manutenção Urbana
 
-API REST para registrar danos em espaços públicos, reunir relatos de moradores e acompanhar a execução de serviços de manutenção urbana.
+## Ficha da CitizenTech
+
+| Campo | Descrição |
+|---|---|
+| **Nome da CitizenTech** | **CitizenTech — Plataforma Inteligente de Zeladoria e Manutenção Urbana**. Equipe: **GIT PUSH --FORCE**. |
+| **Cidade e bairro** | **São Paulo (SP)**, com dados demonstrativos dos bairros Bela Vista, Vila Mariana, Santana, Pinheiros e Mooca. O bairro de aplicação de um piloto real ainda será definido e validado pela equipe. |
+| **Cidadão beneficiado** | Moradores que utilizam calçadas e vias públicas, especialmente pessoas com deficiência ou mobilidade reduzida, idosos e pessoas com carrinhos de bebê. |
+| **Problema, em uma frase** | Relatos dispersos sobre danos urbanos dificultam a identificação de problemas, a priorização de reparos e o acompanhamento da manutenção de espaços públicos acessíveis. |
+| **Como funciona** | O cidadão registra um dano com categoria, localização e link de foto ou acrescenta um relato a uma ocorrência existente. O sistema sugere possíveis duplicidades e calcula a prioridade por regras de impacto na mobilidade. O gestor analisa a ocorrência, abre uma ordem de serviço e atualiza o andamento até a conclusão, com histórico público. |
+| **O que cada parte faz** | **Cidadão:** registra e acompanha relatos. **Gestor:** analisa, organiza a manutenção e atualiza os status. **Front-end web:** apresenta os formulários e as consultas em uma interface responsiva. **Java / Spring Boot:** oferece a API, valida os dados, aplica as regras de negócio e controla as permissões. **Oracle / Database Design:** estrutura e persiste cidadãos, bairros, categorias, ocorrências, relatos, ordens de serviço e histórico. |
+| **Link do repositório** | [github.com/1IMperaDOR0/citizentech](https://github.com/1IMperaDOR0/citizentech) |
+| **Indicador de impacto** | **Taxa de resolução das ocorrências:** quantidade de ocorrências concluídas ÷ quantidade de ocorrências registradas no mesmo período × 100. Considerar o status atual das ocorrências registradas no período, incluindo as arquivadas no denominador. O indicador é proposto para acompanhamento; ainda não há resultado medido em um piloto real. |
+| **ODS conectados** | **ODS 11 — Cidades e comunidades sustentáveis:** cuidado com espaços públicos e acessibilidade. **ODS 10 — Redução das desigualdades:** atenção às barreiras enfrentadas por pessoas com mobilidade reduzida. **ODS 9 — Indústria, inovação e infraestrutura:** tecnologia aplicada à gestão da manutenção da infraestrutura urbana. |
+
+Os registros da carga inicial são fictícios. A ficha descreve o MVP acadêmico e suas contribuições pretendidas; não representa uma implantação oficial da prefeitura nem resultados de impacto já comprovados.
+
+Plataforma web com API REST para registrar danos em espaços públicos, reunir relatos de moradores e acompanhar a execução de serviços de manutenção urbana.
 
 Projeto desenvolvido para a **Global Solution CitizenTech — FIAP 2026, 2º semestre**, nas disciplinas **Database Design** e **Domain Driven Design — Java**, do curso de Engenharia de Software.
 
@@ -17,8 +33,9 @@ O público beneficiado inclui moradores, pessoas com deficiência, idosos e pess
 - API e persistência implementadas.
 - Scripts executados e integração local com o Oracle FIAP validada pelo grupo.
 - Fluxo de requisições testado localmente pelo Postman.
-- Protótipos de interface documentados;
-- Publicação no Render em configuração.
+- Interface web responsiva para consulta pública, registro de danos e gestão.
+- Login de gestor e conta cidadã de demonstração integrado à API.
+- Aplicação publicada no Render; acesso cidadão validado pelo grupo.
 
 | Informação | Link ou identificação |
 |---|---|
@@ -43,6 +60,7 @@ O público beneficiado inclui moradores, pessoas com deficiência, idosos e pess
 
 | Tecnologia | Utilização |
 |---|---|
+| HTML, CSS e JavaScript | Interface web responsiva e consumo da API |
 | Java 21 | Linguagem e plataforma de execução |
 | Spring Boot 3.5.7 | Configuração e execução da API |
 | Spring Web | Endpoints REST |
@@ -142,10 +160,10 @@ No SQL Developer, conecte-se ao Oracle FIAP e execute os arquivos com **F5**, na
 
 | Ordem | Arquivo | Conteúdo |
 |---|---|---|
-| 1 | [`database/01_ddl.sql`](database/01_ddl.sql) | Tabelas, identidades, constraints e índices |
-| 2 | [`database/02_dml.sql`](database/02_dml.sql) | Carga de dados fictícios e `COMMIT` |
-| 3 | [`database/03_dql.sql`](database/03_dql.sql) | Três consultas solicitadas na atividade |
-| 4 | [`database/04_verificacao.sql`](database/04_verificacao.sql) | Conferência da quantidade de linhas |
+| 1 | [`database/01_ddl.sql`](zeladoria/database/01_ddl.sql) | Tabelas, identidades, constraints e índices |
+| 2 | [`database/02_dml.sql`](zeladoria/database/02_dml.sql) | Carga de dados fictícios e `COMMIT` |
+| 3 | [`database/03_dql.sql`](zeladoria/database/03_dql.sql) | Três consultas solicitadas na atividade |
+| 4 | [`database/04_verificacao.sql`](zeladoria/database/04_verificacao.sql) | Conferência da quantidade de linhas |
 
 Executar criação e carga em um **schema vazio**. Os scripts não são idempotentes. Se o banco já estiver preparado, não repita DDL e DML para iniciar a API.
 
@@ -160,7 +178,13 @@ Os IDs gerados começam em `1000`; a carga didática reserva IDs de `1` a `999`.
 - Acesso ao Oracle FIAP com o schema preparado.
 - IntelliJ IDEA ou outra IDE Java, opcional.
 
-Baixe ou clone este repositório e abra um terminal na pasta que contém o `pom.xml`.
+Baixe ou clone este repositório e abra um terminal na pasta `zeladoria`, que contém o `pom.xml`:
+
+```bash
+cd zeladoria
+```
+
+Os comandos Maven e os caminhos de scripts citados nas instruções de execução são relativos a essa pasta.
 
 ### Variáveis de ambiente
 
@@ -173,7 +197,7 @@ Baixe ou clone este repositório e abra um terminal na pasta que contém o `pom.
 | `ADMIN_PASSWORD` | Sim | Senha do gestor, com pelo menos 12 caracteres |
 | `CITIZEN_USER` | Não | Email de um cidadão previamente cadastrado no Oracle |
 | `CITIZEN_PASSWORD` | Se houver conta cidadã | Senha com pelo menos 12 caracteres |
-| `PORT` | Não | Porta HTTP; padrão `8080`. Os exemplos abaixo usam `8081` |
+| `PORT` | Não | Porta HTTP; padrão `8081`. O Render fornece a porta do serviço |
 
 Formato JDBC com **service name**:
 
@@ -210,11 +234,12 @@ Depois da mensagem `Started ZeladoriaApplication`, consulte:
 
 | Endereço local | Resultado esperado |
 |---|---|
+| `http://localhost:8081/` | Interface web da CitizenTech |
 | `http://localhost:8081/actuator/health` | `200 OK`, com `{"status":"UP"}` |
 | `http://localhost:8081/api/ocorrencias` | Lista de ocorrências do Oracle |
 | `http://localhost:8081/api/categorias` | Lista de categorias |
 
-Se não definir `PORT`, utilize `8080` nos endereços. A rota `/` não possui página inicial; um `404` nessa rota não indica falha da API.
+Sem definir `PORT`, a aplicação utiliza `8081`. A interface web fica disponível em `http://localhost:8081/`.
 
 ### Autenticação
 
@@ -224,6 +249,44 @@ No Postman, use **Basic Auth** com os valores de `ADMIN_USER` e `ADMIN_PASSWORD`
 
 As contas de autenticação são configuradas em memória. Cadastrar um cidadão no Oracle não cria um login automaticamente. A conta cidadã opcional deve usar como login o email desse cidadão. Fora do ambiente local, utilizar HTTPS.
 
+
+### Acesso de teste — Cidadão
+
+Conta de demonstração para avaliação das funcionalidades do cidadão:
+
+| Campo | Valor |
+|---|---|
+| Email / login | `pessoa1@example.org` |
+| Senha | `123456789101112` |
+| Perfil | `CIDADAO` |
+
+Na interface web, clique em **Entrar** e informe essas credenciais. Depois, acesse **Registrar um dano** para criar uma ocorrência ou consulte os registros existentes.
+
+Este acesso depende de `CITIZEN_USER=pessoa1@example.org` e `CITIZEN_PASSWORD=123456789101112` no ambiente da aplicação, com o email vinculado a um registro de `GS_CIDADAO`. A conta de teste não possui permissão para as operações administrativas do gestor.
+
+### Entrar pela interface web
+
+Clique em **Entrar**, no topo da página.
+
+- **Gestor:** informe o usuário e a senha configurados em `ADMIN_USER` e `ADMIN_PASSWORD`.
+- **Cidadão:** informe o email configurado em `CITIZEN_USER` e a senha definida em `CITIZEN_PASSWORD` (pelo menos 12 caracteres).
+
+O email de `CITIZEN_USER` deve corresponder a um registro de `GS_CIDADAO` no mesmo banco e schema utilizados pela aplicação. Para conferir os cadastros no SQL Developer:
+
+```sql
+SELECT ID_CIDADAO, NOME, EMAIL
+FROM GS_CIDADAO
+ORDER BY ID_CIDADAO;
+```
+
+Se a carga de exemplo foi executada, `pessoa1@example.org` é um dos emails disponíveis. Escolha um email retornado pela consulta; não é necessário recriar a carga.
+
+No Render, configure as variáveis em **Environment**, salve e aguarde o novo deploy. No IntelliJ, configure-as em **Run → Edit Configurations → Environment variables** e reinicie a aplicação.
+
+Se aparecer **“O email da sua conta ainda não está vinculado a um cidadão no banco”**, a autenticação foi aceita, mas o cadastro correspondente não foi encontrado. Confira se o email está correto e se `DB_URL` e `DB_USER` apontam para o banco/schema consultado. Também é possível cadastrar o cidadão com esse mesmo email pelo acesso de gestor. Depois, saia e entre novamente como cidadão.
+
+A conta cidadã atual é de demonstração, configurada por ambiente. Cadastrar uma pessoa no banco não cria outra conta de acesso. As credenciais da interface ficam apenas na memória da aba; atualizar a página exige novo login.
+
 ## Contrato da API
 
 Todas as rotas `/api` utilizam JSON quando há corpo de requisição ou resposta.
@@ -231,6 +294,7 @@ Todas as rotas `/api` utilizam JSON quando há corpo de requisição ou resposta
 | Método | Rota | Perfil |
 |---|---|---|
 | GET | `/actuator/health` | Público |
+| GET | `/api/sessao` | Cidadão ou gestor |
 | GET | `/api/bairros` | Público |
 | GET | `/api/categorias` | Público |
 | GET | `/api/ocorrencias?limite=100` | Público |
@@ -303,7 +367,7 @@ Execute na raiz do projeto:
 mvn clean verify
 ```
 
-A base do projeto possui **10 testes automatizados**, cobrindo prioridade, transições de status, exigência de OS, associação de relatos, permissões, arquivamento, rollback transacional, carga de exemplo e as três consultas SQL.
+O projeto atualizado possui **16 testes automatizados**, cobrindo prioridade, transições de status, exigência de OS, associação de relatos, permissões, arquivamento, rollback transacional, carga de exemplo, as três consultas SQL, recursos públicos da interface, identificação de sessão e vínculo do cidadão.
 
 Os testes utilizam H2 em modo Oracle e não dependem das credenciais da FIAP. A validação no H2 complementa, mas não substitui, a execução no Oracle. Na validação local do grupo, também foram exercitados os endpoints contra o Oracle FIAP.
 
@@ -323,14 +387,14 @@ Execute as requisições na ordem numérica. A coleção captura o ID após a cr
 
 | Implementado | Evolução prevista |
 |---|---|
-| API REST e persistência Oracle | Interface web para cidadão e gestão |
+| Interface web responsiva, API REST e persistência Oracle | Evolução da experiência com validação dos usuários |
 | URL de foto | Upload e armazenamento de imagens |
 | Prioridade por regras | Validação dos critérios com usuários e dados |
 | Sugestão de proximidade | Apoio por mapas e tratamento de duplicidades mais completo |
 | Gestor e conta cidadã de demonstração | Cadastro e gestão de identidades |
 | Histórico de mudanças de estado | Auditoria de edições e arquivamentos |
 
-O MVP não possui frontend funcional, geocodificação, reconhecimento de imagem, fusão automática de ocorrências, paginação por cursor ou filtro de bairro na API. Os protótipos das telas estão na documentação. A descrição pública de ocorrências exige moderação antes de um uso real.
+O MVP possui interface web funcional, com filtros sobre os registros carregados. Não possui geocodificação, reconhecimento de imagem, fusão automática de ocorrências, paginação por cursor ou filtro de bairro na API. Os protótipos das telas estão na documentação. A descrição pública de ocorrências exige moderação antes de um uso real.
 
 ## Documentação
 
