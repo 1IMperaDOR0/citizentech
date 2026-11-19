@@ -4,7 +4,7 @@
 
 | Campo | Descrição |
 |---|---|
-| **Nome da CitizenTech** | **CitizenTech — Plataforma Inteligente de Zeladoria e Manutenção Urbana**. Equipe: **GIT PUSH --FORCE**. |
+| **Nome da CitizenTech** | **CitizenTech — Plataforma Inteligente de Zeladoria e Manutenção Urbana**. |
 | **Cidade e bairro** | **São Paulo (SP)**, com dados demonstrativos dos bairros Bela Vista, Vila Mariana, Santana, Pinheiros e Mooca. O bairro de aplicação de um piloto real ainda será definido e validado pela equipe. |
 | **Cidadão beneficiado** | Moradores que utilizam calçadas e vias públicas, especialmente pessoas com deficiência ou mobilidade reduzida, idosos e pessoas com carrinhos de bebê. |
 | **Problema, em uma frase** | Relatos dispersos sobre danos urbanos dificultam a identificação de problemas, a priorização de reparos e o acompanhamento da manutenção de espaços públicos acessíveis. |
